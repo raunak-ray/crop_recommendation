@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crop Details - 🌱 CropAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/crop-details.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌱 CropAI</div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('landing_page') }}">Home</a></li>
+      <li><a href="{{ url_for('season_page') }}">Seasons</a></li>
+      <li><a href="#about-ai">About AI</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1 id="crop-title">Loading...</h1>
+    <p id="crop-subtitle">Fetching crop details 🌾</p>
+  </header>
+
+  
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <!-- Crop Details Section -->
+  <section class="crop-details">
+    <div class="container" id="crop-details" style="display:none;">
+      <img id="crop-img" src="" alt="" class="crop-img"/>
+      <h2 id="crop-name"></h2>
+      <p id="crop-description" class="description"></p>
+      <ul class="crop-info">
+        <li><strong>🌍 Soil:</strong> <span id="crop-soil"></span></li>
+        <li><strong>⚖️ pH:</strong> <span id="crop-ph"></span></li>
+        <li><strong>🌧️ Rainfall:</strong> <span id="crop-rainfall"></span></li>
+        <li><strong>🦠 Diseases:</strong> <span id="crop-diseases"></span></li>
+        <li><strong>💊 Medicine:</strong> <span id="crop-medicine"></span></li>
+        <li><strong>🍂 Season:</strong> <span id="crop-season"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- About AI -->
+  <section class="about-ai" id="about-ai">
+    <h1>🤖 AI for Smarter Farming</h1>
+    <div class="container">
+      <p>
+        With AI, farmers can know not just which crop to grow, but how to take care of it. 
+        From detecting diseases to understanding soil health — AI makes farming more reliable.
+      </p>
+      <img src="{{ url_for('static', filename='images/about-ai.png') }}" alt="about-ai image"/>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      <p>🌱 CropAI &copy; 2025 | All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="{{ url_for('landing_page') }}">Home</a>
+        <a href="{{ url_for('season_page') }}">Seasons</a>
+        <a href="#about-ai">About AI</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CROPS_JSON_URL = "{{ url_for('static', filename='crops.json') }}";
+    const params = new URLSearchParams(window.location.search);
+    const cropName = decodeURIComponent(window.location.pathname.split("/").pop());
+    const season = params.get("season");
+  </script>
+  <script src="{{ url_for('static', filename='js/crop-details.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Season Crops - 🌱 CropAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/season.css') }}">
+  <style>
+    /* Loader */
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background: green;
+      animation: bounce 0.6s infinite alternate;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce {
+      from { transform: translateY(0); opacity: 0.6; }
+      to { transform: translateY(-12px); opacity: 1; }
+    }
+
+    /* Fade-in animation for cards */
+    .card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      cursor: pointer;
+    }
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌱 CropAI</div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('landing_page') }}">Home</a></li>
+      <li><a href="{{ url_for('season_page') }}">Seasons</a></li>
+      <li><a href="#about-ai">About AI</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <input type="text" id="search-box" placeholder="Search crop..." />
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1 id="season-title">Season Crops</h1>
+    <p id="season-desc">Crops suitable for selected season 🌾</p>
+    
+  </header>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <!-- Season Crops Section -->
+  <section class="season-crops">
+    <div class="container" id="crops-container">
+      <!-- JS will populate crops here -->
+    </div>
+    <div class="load-more-wrapper">
+      <button id="loadMoreBtn" style="display:none;">Load More</button>
+    </div>
+  </section>
+
+  <!-- About AI Section -->
+  <section class="about-ai" id="about-ai">
+    <h1>🤖 Smarter Farming with AI</h1>
+    <div class="container">
+      <p>
+        Artificial Intelligence transforms agriculture by analyzing soil,
+        predicting weather, and recommending the best crops for each season.
+        Farmers gain higher yields, sustainable growth, and reduced risks.
+      </p>
+      <img src="{{ url_for('static', filename='images/about-ai.png') }}" alt="about-ai image" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      <p>🌱 CropAI &copy; 2025 | All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="{{ url_for('landing_page') }}">Home</a>
+        <a href="{{ url_for('season_page') }}">Seasons</a>
+        <a href="#about-ai">About AI</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CROPS_JSON_URL = "{{ url_for('static', filename='crops.json') }}";
+  </script>
+  <script src="{{ url_for('static', filename='js/season.js') }}"></script>
+  
+</body>
+</html>

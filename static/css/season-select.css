@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #ECEFF1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background: #0B1F3B; /* Deep navy */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #FF6F61;
+}
+
+.navbar .nav-links {
+  display: flex;
+  margin-right: 420px;
+  gap: 30px;
+  list-style: none;
+}
+
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: #ECEFF1;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links li a:hover {
+  color: #FFB74D;
+}
+
+/* Season Select Section */
+.season {
+  width: 100%;
+  background: #1B2A3C; /* Dark slate blue */
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.season h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 900;
+  color: #FF6F61;
+}
+
+.season p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #80CBC4;
+  margin-bottom: 40px;
+}
+
+.season .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.season .container .card {
+    flex: 1 1 30%;
+    min-width: 300px;
+    height: 200px;
+    background: #243447;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.season .container .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+}
+
+.season .container .card h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4DD0E1;
+    margin-bottom: 10px;
+}
+
+.season .container .card h4 {
+    color: #ECEFF1;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background: #0B1F3B;
+  padding: 40px 20px;
+  text-align: center;
+  color: #78909C;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .season .container .card {
+    width: 80%;
+  }
+}

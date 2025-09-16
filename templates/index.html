@@ -1,58 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Recommendation System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌱 AI Crop Recommendation System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌱 CropAI</div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('landing_page') }}">Home</a></li>
+      <li><a href="#season">Seasons</a></li>
+      <li><a href="#about-ai">About AI</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="{{ url_for('season_page') }}"><button class="nav-button">Get Started</button></a>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <h1 class="title">🌱 AI Crop Recommendation System</h1>
+    <p class="description">
+      Helping farmers choose the right crops for the right season 🌾
+    </p>
+    <a href="{{ url_for('season_page') }}"><button class="header-button">Get Started</button></a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Select an Option to Get Started</h2>
     <div class="container">
-        <h1>🌱 Crop Recommendation System</h1>
-
-        <!-- Show error messages -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            <ul class="messages">
-              {% for category, message in messages %}
-                <li class="{{ category }}">{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
-
-        <form method="POST" class="form">
-            <label>Nitrogen (N)</label>
-            <input type="number" name="N" step="any" required>
-
-            <label>Phosphorus (P)</label>
-            <input type="number" name="P" step="any" required>
-
-            <label>Potassium (K)</label>
-            <input type="number" name="K" step="any" required>
-
-            <label>Temperature (°C)</label>
-            <input type="number" name="temperature" step="any" required>
-
-            <label>Humidity (%)</label>
-            <input type="number" name="humidity" step="any" required>
-
-            <label>pH</label>
-            <input type="number" name="ph" step="any" required>
-
-            <label>Rainfall (mm)</label>
-            <input type="number" name="rainfall" step="any" required>
-
-            <button type="submit">🌾 Predict Crop</button>
-        </form>
-
-        {% if prediction %}
-        <div class="result">
-            <h2>Recommended Crop: <span>{{ prediction }}</span></h2>
-        </div>
-        {% endif %}
+      <a href="{{ url_for('season_select') }}" class="card">
+        <h4>🌞 Check Crops by Season</h4>
+        <p>See which crops are suitable for different seasons.</p>
+      </a>
+      <a href="{{ url_for('ml_prediction') }}" class="card">
+        <h4>🌾 Predict Crop Using Data</h4>
+        <p>Enter soil & weather parameters to get AI recommendations.</p>
+      </a>
     </div>
-    <script src="{{ url_for('static', filename='validation.js') }}"></script>
+  </section>
 
+  <!-- Seasons Section -->
+  <section class="season" id="season">
+    <h1>Choose a Season</h1>
+    <p>Click on a season to explore crops perfect for that time of year.</p>
+    <div class="container">
+      <a href="{{ url_for('season_page') }}?season=summer" class="card">
+        <h2>☀️</h2>
+        <h4>Summer</h4>
+      </a>
+      <a href="{{ url_for('season_page') }}?season=monsoon" class="card">
+        <h2>🌧️</h2>
+        <h4>Monsoon</h4>
+      </a>
+      <a href="{{ url_for('season_page') }}?season=autumn" class="card">
+        <h2>🍂</h2>
+        <h4>Autumn</h4>
+      </a>
+      <a href="{{ url_for('season_page') }}?season=pre-winter" class="card">
+        <h2>❄️</h2>
+        <h4>Pre-winter</h4>
+      </a>
+      <a href="{{ url_for('season_page') }}?season=winter" class="card">
+        <h2>🧤</h2>
+        <h4>Winter</h4>
+      </a>
+      <a href="{{ url_for('season_page') }}?season=spring" class="card">
+        <h2>🌸</h2>
+        <h4>Spring</h4>
+      </a>
+    </div>
+  </section>
+
+  <!-- About AI Section -->
+  <section class="about-ai" id="about-ai">
+    <h1>🤖 Smarter Farming with AI</h1>
+    <div class="container">
+      <p>
+        Artificial Intelligence transforms agriculture by analyzing soil,
+        predicting weather, and recommending the best crops for each season.
+        Farmers gain higher yields, sustainable growth, and reduced risks.
+      </p>
+      <img src="{{ url_for('static', filename='images/about-ai.png') }}" alt="about-ai image">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      <p>🌱 CropAI &copy; 2025 | All Rights Reserved</p>
+      <div class="footer-links">
+        <a href="{{ url_for('landing_page') }}">Home</a>
+        <a href="#season">Seasons</a>
+        <a href="#about-ai">About AI</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
