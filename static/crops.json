@@ -12,6 +12,28 @@
       "medicine": "Seed treatment with Thiram, Mancozeb"
     },
     {
+      "name": "Grapes",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Wine_grapes03.jpg",
+      "description": "Grapes are a temperate fruit crop mainly grown in the Summer season on well-drained sandy loam to clay loam soils.",
+      "soil": "Sandy loam to clay loam, well-drained",
+      "ph": "6.5 - 7.5",
+      "rainfall": "75 - 100 cm",
+      "season": "Summer",
+      "diseases": "Downy mildew, Powdery mildew, Anthracnose, Botrytis rot",
+      "medicine": "Sulfur dusting, Copper oxychloride, Carbendazim"
+    },    
+    {
+      "name": "Pomegranate",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Pomegranate_Juice_%282019%29.jpg",
+      "description": "Pomegranate is a perennial fruit crop that thrives in semi-arid regions, mainly grown in the Summer season on well-drained loamy soils.",
+      "soil": "Loamy, sandy loam, well-drained",
+      "ph": "5.5 - 7.5",
+      "rainfall": "50 - 100 cm",
+      "season": "Summer",
+      "diseases": "Bacterial blight, Fruit rot, Wilt, Anthracnose",
+      "medicine": "Copper oxychloride, Carbendazim, Neem oil sprays"
+    },    
+    {
       "name": "Millets",
       "img": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Millets_crop.jpg",
       "description": "Millets is a crop commonly grown during Summer season. Suitable for sandy loam.",
@@ -223,6 +245,17 @@
   ],
   "Monsoon": [
     {
+      "name": "Coconut",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/8/89/JfBohol7038naturefvf_39.JPG",
+      "description": "Coconut is a tropical perennial crop mainly grown in the Monsoon season on coastal sandy loam soils with high humidity.",
+      "soil": "Sandy loam, alluvial, coastal soil",
+      "ph": "5.0 - 8.0",
+      "rainfall": "100 - 300 cm",
+      "season": "Monsoon",
+      "diseases": "Bud rot, Stem bleeding, Leaf blight, Root wilt",
+      "medicine": "Copper oxychloride, Bordeaux mixture, Neem-based formulations"
+    },    
+    {
       "name": "Rice",
       "img": "https://upload.wikimedia.org/wikipedia/commons/4/48/Kanchanaburi%2C_Thailand%2C_Asian_rice_%28Oryza_sativa%29_grass.jpg",
       "description": "Rice is the staple crop of Monsoon season, requiring abundant water and high humidity. It grows best in clayey or loamy soil with good water retention.",
@@ -233,6 +266,28 @@
       "diseases": "Blast, Bacterial leaf blight, Sheath blight",
       "medicine": "Carbendazim, Tricyclazole, Resistant varieties"
     },
+    {
+      "name": "Kidneybeans",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Chitra_Rajma.jpg",
+      "description": "Kidney beans are grown mainly in the Monsoon season on well-drained loamy soil rich in organic matter.",
+      "soil": "Loamy, well-drained",
+      "ph": "6.0 - 7.0",
+      "rainfall": "60 - 150 cm",
+      "season": "Monsoon",
+      "diseases": "Anthracnose, Rust, Mosaic virus, Root rot",
+      "medicine": "Carbendazim, Mancozeb, Neem-based biopesticides"
+    },  
+    {
+      "name": "Mothbeans",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Matki.JPG",
+      "description": "Moth beans are drought-resistant pulses mainly grown in the Monsoon season on sandy or loamy soils.",
+      "soil": "Sandy loam, well-drained",
+      "ph": "7.0 - 8.0",
+      "rainfall": "25 - 75 cm",
+      "season": "Monsoon",
+      "diseases": "Powdery mildew, Yellow mosaic virus, Rust",
+      "medicine": "Neem-based pesticides, Mancozeb, Sulfur dusting"
+    },      
     {
       "name": "Sugarcane",
       "img": "https://upload.wikimedia.org/wikipedia/commons/9/95/Sugarcane_plant_02.jpg",
@@ -255,6 +310,17 @@
       "diseases": "Stem rot, Root rot",
       "medicine": "Seed treatment with Thiram, Neem-based fungicides"
     },
+    {
+      "name": "Coffee",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Roasted_coffee_beans.jpg",
+      "description": "Coffee is a tropical plantation crop mainly grown in the Monsoon season under shade on fertile well-drained loamy soils.",
+      "soil": "Loamy, well-drained, rich in organic matter",
+      "ph": "6.0 - 6.5",
+      "rainfall": "150 - 250 cm",
+      "season": "Monsoon",
+      "diseases": "Coffee rust, Root rot, Dieback, Berry borer",
+      "medicine": "Copper fungicides, Neem oil sprays, Triazole fungicides"
+    },    
     {
       "name": "Turmeric",
       "img": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Curcuma_longa_DSCN0555.jpg",
@@ -344,7 +410,7 @@
       "medicine": "Metalaxyl, Trichoderma"
     },
     {
-      "name": "Tur (Arhar)",
+      "name": "Pigeonpeas",
       "img": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Cajanus_cajan%2C_flowers.jpg",
       "description": "Pigeon pea (Arhar) is a legume crop grown in Monsoon, tolerant to low rainfall.",
       "soil": "Sandy loam to clay loam soil",
@@ -420,6 +486,17 @@
       "diseases": "Yellow mosaic virus, Leaf curl",
       "medicine": "Neem oil spray, Resistant varieties"
     },
+    {
+      "name": "Mungbean",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/1/17/Mung_bean_%28Vigna_radiata%29_Dired_open_Pod_in_Hong_Kong.JPG",
+      "description": "Mung beans are short-duration pulse crops grown mainly in the Monsoon season on well-drained loamy soil.",
+      "soil": "Loamy, sandy loam",
+      "ph": "6.2 - 7.2",
+      "rainfall": "60 - 90 cm",
+      "season": "Monsoon",
+      "diseases": "Yellow mosaic virus, Powdery mildew, Leaf spot, Root rot",
+      "medicine": "Imidacloprid, Neem-based extracts, Carbendazim"
+    },    
     {
       "name": "Green Gram",
       "img": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Vigna_radiata_256733476.jpg",
@@ -554,6 +631,17 @@
       "diseases": "Black rot, Downy mildew",
       "medicine": "Mancozeb, Copper oxychloride"
     },
+    {
+      "name": "Blackgram",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Black_gram.jpg",
+      "description": "Black gram is a protein-rich pulse crop mainly grown in the Monsoon season on fertile loamy soils.",
+      "soil": "Loamy, clay loam",
+      "ph": "6.0 - 7.5",
+      "rainfall": "60 - 100 cm",
+      "season": "Monsoon",
+      "diseases": "Cercospora leaf spot, Yellow mosaic virus, Powdery mildew, Root rot",
+      "medicine": "Triazole fungicides, Carbendazim, Neem-based formulations"
+    },    
     {
       "name": "Cauliflower",
       "img": "https://upload.wikimedia.org/wikipedia/commons/0/08/Bloemkool.jpg",
@@ -899,6 +987,17 @@
       "diseases": "Leaf blight, Tikka disease",
       "medicine": "Thiram seed treatment, Metalaxyl"
     },
+    {
+      "name": "Apple",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
+      "description": "Apple is a temperate fruit crop mainly grown in the Winter season in hilly regions with well-drained loamy soils.",
+      "soil": "Loamy, well-drained, rich in organic matter",
+      "ph": "5.5 - 6.5",
+      "rainfall": "100 - 125 cm",
+      "season": "Winter",
+      "diseases": "Apple scab, Powdery mildew, Fire blight, Canker",
+      "medicine": "Copper fungicides, Mancozeb, Neem oil sprays"
+    },    
     {
       "name": "Barley",
       "img": "https://upload.wikimedia.org/wikipedia/commons/1/12/Verdant_barley_-_winter_hooded_barley.jpg",
