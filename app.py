@@ -49,7 +49,6 @@ def landing_page():
     """Landing page"""
     return render_template("index.html")
 
-
 @app.route("/predict", methods=["GET", "POST"])
 def ml_prediction():
     """ML-based crop prediction page"""
@@ -115,21 +114,6 @@ def season_select():
     return render_template("season-select.html")
 
 
-@app.route("/ml_crop/<crop_name>")
-def ml_crop_details(crop_name):
-    """Crop details page for ML-predicted crops"""
-    json_path = os.path.join(app.static_folder, "ml_crops.json")
-    with open(json_path, "r") as f:
-        crops_data = json.load(f)
-
-    crop_obj = next(
-        (c for c in crops_data if c["name"].lower() == crop_name.lower()), None
-    )
-
-    if not crop_obj:
-        abort(404, description="Crop not found")
-
-    return render_template("ml-crop-details.html", crop=crop_obj)
 
 
 # -------------------- MAIN --------------------

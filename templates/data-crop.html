@@ -1,117 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crop Recommendation</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/data-crop.css') }}" />
-</head>
-<body>
-  <!-- ---------------- Navbar ---------------- -->
-  <nav class="navbar">
-    <div class="logo">🌱 Smart Crops</div>
-    <ul class="nav-links">
-      <li><a href="{{ url_for('landing_page') }}">Home</a></li>
-      <li><a href="{{ url_for('season_select') }}">Season Crops</a></li>
-      
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Recommendation</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/data-crop.css') }}"
+    />
+  </head>
+  <body>
+    <!-- ---------------- Navbar ---------------- -->
+    <nav class="navbar">
+      <div class="logo">🌱 Smart Crops</div>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('landing_page') }}">Home</a></li>
+        <li><a href="{{ url_for('season_select') }}">Season Crops</a></li>
+      </ul>
+    </nav>
+
+    <!-- ---------------- Header ---------------- -->
+    <header>
+      <h1>🌾 Crop Recommendation</h1>
+      <p>
+        Enter the soil, weather, and nutrient details to get the best crop
+        suggestion.
+      </p>
+    </header>
+
+    <!-- ---------------- Main Content ---------------- -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
     </ul>
-  </nav>
+    {% endif %} {% endwith %}
 
-  <!-- ---------------- Header ---------------- -->
-  <header>
-    <h1>🌾 Crop Recommendation</h1>
-    <p>Enter the soil, weather, and nutrient details to get the best crop suggestion.</p>
-  </header>
+    <main>
+      <section class="form-section">
+        <form method="POST" action="{{ url_for('ml_prediction') }}">
+          <div class="input-group">
+            <label>Nitrogen (N)</label>
+            <input type="number" name="N" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>Phosphorus (P)</label>
+            <input type="number" name="P" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>Potassium (K)</label>
+            <input type="number" name="K" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>Temperature (°C)</label>
+            <input type="number" name="temperature" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>Humidity (%)</label>
+            <input type="number" name="humidity" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>pH</label>
+            <input type="number" name="ph" step="any" required />
+          </div>
+          <div class="input-group">
+            <label>Rainfall (mm)</label>
+            <input type="number" name="rainfall" step="any" required />
+          </div>
+          <button type="submit">Predict Crop 🌾</button>
+        </form>
+      </section>
 
-  <!-- ---------------- Main Content ---------------- -->
-  <main>
-    <section class="form-section">
-      <form method="POST" action="{{ url_for('ml_prediction') }}">
-        <div class="input-group">
-          <label>Nitrogen (N)</label>
-          <input type="number" name="N" step="any" required />
+      {% if prediction %}
+      <section class="season-crops">
+        <h2 style="text-align: center; color: #ffb74d; margin-bottom: 20px">
+          Recommended Crop: {{ prediction }}
+        </h2>
+        <div id="predicted-crops" class="container">
+          <!-- Predicted crop card will appear here -->
         </div>
-        <div class="input-group">
-          <label>Phosphorus (P)</label>
-          <input type="number" name="P" step="any" required />
-        </div>
-        <div class="input-group">
-          <label>Potassium (K)</label>
-          <input type="number" name="K" step="any" required />
-        </div>
-        <div class="input-group">
-          <label>Temperature (°C)</label>
-          <input type="number" name="temperature" step="any" required />
-        </div>
-        <div class="input-group">
-          <label>Humidity (%)</label>
-          <input type="number" name="humidity" step="any" required />
-        </div>
-        <div class="input-group">
-          <label>pH</label>
-          <input type="number" name="ph" step="any" required />
-        </div>
-        <div class="input-group">
-          <label>Rainfall (mm)</label>
-          <input type="number" name="rainfall" step="any" required />
-        </div>
-        <button type="submit">Predict Crop 🌾</button>
-      </form>
-    </section>
+      </section>
+      {% endif %}
+    </main>
 
-    {% if prediction %}
-    <section class="season-crops">
-      <h2 style="text-align:center; color:#FFB74D; margin-bottom:20px;">
-        Recommended Crop: {{ prediction }}
-      </h2>
-      <div id="predicted-crops" class="container">
-        <!-- Predicted crop card will appear here -->
-      </div>
-    </section>
-    {% endif %}
-  </main>
+    <!-- ---------------- Footer ---------------- -->
+    <footer>🌱 Smart Crop Recommendation System</footer>
 
-  <!-- ---------------- Footer ---------------- -->
-  <footer>
-    🌱 Smart Crop Recommendation System
-  </footer>
+    <!-- ---------------- Scripts ---------------- -->
+    <script>
+      const prediction = "{{ prediction }}";
 
-  <!-- ---------------- Scripts ---------------- -->
-  <script>
-    const prediction = "{{ prediction }}";
+      if (prediction) {
+        fetch("{{ url_for('static', filename='crops.json') }}")
+          .then((res) => res.json())
+          .then((data) => {
+            let allCrops = [];
+            for (const season in data) {
+              allCrops = allCrops.concat(
+                data[season].map((c) => ({ ...c, season }))
+              );
+            }
 
-    if (prediction) {
-      fetch("{{ url_for('static', filename='crops.json') }}")
-        .then(res => res.json())
-        .then(data => {
-          let allCrops = [];
-          for (const season in data) {
-            allCrops = allCrops.concat(data[season].map(c => ({ ...c, season })));
-          }
+            const crop = allCrops.find(
+              (c) =>
+                c.name.trim().toLowerCase() === prediction.trim().toLowerCase()
+            );
 
-          const crop = allCrops.find(
-            c => c.name.trim().toLowerCase() === prediction.trim().toLowerCase()
-          );
+            const container = document.getElementById("predicted-crops");
 
-          const container = document.getElementById("predicted-crops");
-
-          if (crop) {
-            container.innerHTML = `
+            if (crop) {
+              container.innerHTML = `
               <div class="card" onclick="window.location.href='{{ url_for('crop_details', crop_name='__CROP__') }}'
                 .replace('__CROP__', encodeURIComponent('${crop.name}'))
                 + '?season=${encodeURIComponent(crop.season)}&source=predict'">
-                <img src="${crop.img.trim()}" alt="${crop.name}" class="crop-img">
+                <img src="${crop.img.trim()}" alt="${
+                crop.name
+              }" class="crop-img">
                 <h2>${crop.name}</h2>
                 <p>${crop.description}</p>
                 <p>🌦 ${crop.season} | 🌍 ${crop.soil}</p>
               </div>
             `;
-          } else {
-            container.innerHTML = `<p style="color:#CFD8DC;">❌ Crop details not found in database for "${prediction}".</p>`;
-          }
-        })
-        .catch(err => console.error("Error loading crops.json", err));
-    }
-  </script>
-</body>
+            } else {
+              container.innerHTML = `<p style="color:#CFD8DC;">❌ Crop details not found in database for "${prediction}".</p>`;
+            }
+          })
+          .catch((err) => console.error("Error loading crops.json", err));
+      }
+    </script>
+    
+  </body>
 </html>
